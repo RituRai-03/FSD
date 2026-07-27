@@ -29,8 +29,34 @@
 
 const promiseOne = new Promise((resolve, reject) => {
    console.log("Successfull data passed.....");
+   resolve("resolve promises");
 });
 
 promiseOne.then(result => {
     console.log(result);
+}).catch(error => {
+    console.log(error);
+});
+
+
+
+//day-03
+new Promise(function(resolve, reject) {
+setTimeout(function(){
+    let msg=true;
+    if(!msg){
+        reject("user : asynch task")
+    }else{
+        reject("ERROR : undefined data...");
+    }
+    console.log("asynchrounous task...");
+    
+},1000)
+
+}).then(function(result) {
+    console.log("asynch task 2");
+
+
+}).catch(function(error) {
+    console.log(error); 
 });
