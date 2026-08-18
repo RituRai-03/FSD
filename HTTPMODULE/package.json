@@ -5,6 +5,7 @@
   "main": "Day-08.js",
   "scripts": {
     "start": "node Day-08.js",
+    "Day-09": "node Day-09.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
