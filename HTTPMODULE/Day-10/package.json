@@ -1,0 +1,14 @@
+{
+  "name": "day-10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Day-10.js",
+  "scripts": {
+    "start": "Node Day-10.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
