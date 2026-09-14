@@ -1,6 +1,6 @@
-/* =========================
-   BASIC RESET
-========================= */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -14,8 +14,8 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #111111;
-    color: #d6d6d6;
+    background: #0d0f12;
+    color: #d8dce2;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -30,48 +30,130 @@ button {
 }
 
 
-/* =========================
-   COLORS
-========================= */
+/* =========================================================
+   THEME
+========================================================= */
 
 :root {
-    --background: #111111;
-    --background-2: #171717;
-    --card: #1c1c1c;
-    --card-hover: #202020;
+    --bg: #0d0f12;
+    --bg-soft: #12151a;
+    --bg-section: #15181d;
 
-    --border: #2a2a2a;
-    --border-hover: #3d3d3d;
+    --card: #181c21;
+    --card-hover: #1d2228;
 
-    --white: #eeeeee;
-    --text: #c8c8c8;
-    --muted: #888888;
+    --border: #292f36;
+    --border-light: #363e47;
 
-    --blue: #5b9bd5;
-    --blue-light: #78acd9;
+    --white: #f2f4f7;
+    --text: #c9ced5;
+    --muted: #858d98;
+
+    --blue: #5c9edb;
+    --blue-light: #7db6e8;
+
+    --green: #6fae82;
+
+    --shadow: rgba(0, 0, 0, 0.25);
 }
 
 
-/* =========================
-   COMMON
-========================= */
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+::selection {
+    background: var(--blue);
+    color: #ffffff;
+}
 
 .container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1120px;
     margin: auto;
 }
 
 .section {
-    padding: 100px 0;
+    padding: 105px 0;
+    position: relative;
 }
 
 .alternate-section {
-    background: #151515;
+    background: var(--bg-section);
 }
 
+
+/* =========================================================
+   SUBTLE BACKGROUND DETAIL
+========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: 12%;
+    right: -180px;
+
+    border: 1px solid rgba(92, 158, 219, 0.08);
+
+    border-radius: 50%;
+
+    animation: slowRotate 18s linear infinite;
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: 22%;
+    right: -95px;
+
+    border: 1px solid rgba(92, 158, 219, 0.06);
+
+    border-radius: 50%;
+
+    animation: slowRotateReverse 14s linear infinite;
+
+    pointer-events: none;
+}
+
+@keyframes slowRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slowRotateReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
 .section-heading {
-    margin-bottom: 45px;
+    margin-bottom: 50px;
 }
 
 .section-heading span {
@@ -79,16 +161,21 @@ button {
 
     color: var(--blue);
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
-    letter-spacing: 2px;
 
-    margin-bottom: 5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    margin-bottom: 7px;
 }
 
 .section-heading h2 {
     color: var(--white);
+
     font-size: 38px;
+
+    line-height: 1.2;
 
     position: relative;
 }
@@ -101,21 +188,21 @@ button {
     width: 35px;
     height: 2px;
 
+    margin-top: 14px;
+
     background: var(--blue);
 
-    margin-top: 12px;
-
-    transition: width 0.4s ease;
+    transition: width 0.45s ease;
 }
 
 .section-heading:hover h2::after {
-    width: 65px;
+    width: 70px;
 }
 
 
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 .navbar {
     position: fixed;
@@ -127,9 +214,11 @@ button {
 
     z-index: 1000;
 
-    background: rgba(17, 17, 17, 0.96);
+    background: rgba(13, 15, 18, 0.94);
 
     border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(8px);
 
     transition:
         background 0.3s ease,
@@ -138,7 +227,7 @@ button {
 
 .nav-container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1120px;
 
     height: 70px;
 
@@ -155,26 +244,28 @@ button {
     font-size: 21px;
     font-weight: bold;
 
+    letter-spacing: -0.5px;
+
     transition: color 0.25s ease;
 }
 
 .logo:hover {
-    color: var(--blue);
+    color: var(--blue-light);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
 
-    gap: 27px;
+    gap: 26px;
 }
 
 .nav-links a {
     position: relative;
 
-    color: #999999;
+    color: #969da6;
 
-    font-size: 14px;
+    font-size: 13px;
 
     transition:
         color 0.25s ease,
@@ -187,18 +278,20 @@ button {
     position: absolute;
 
     left: 0;
-    bottom: -7px;
+    bottom: -8px;
 
     width: 0;
     height: 1px;
 
     background: var(--blue);
 
-    transition: width 0.25s ease;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--white);
+
+    transform: translateY(-1px);
 }
 
 .nav-links a:hover::after {
@@ -208,8 +301,8 @@ button {
 .menu-btn {
     display: none;
 
-    background: none;
     border: none;
+    background: transparent;
 
     color: var(--white);
 
@@ -219,9 +312,9 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     min-height: 100vh;
@@ -232,53 +325,45 @@ button {
     padding-top: 70px;
 
     position: relative;
+
+    overflow: hidden;
 }
 
 .hero-container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1120px;
 
     margin: auto;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .hero-content {
     max-width: 850px;
-
-    animation: heroEnter 0.9s ease forwards;
-}
-
-@keyframes heroEnter {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .hero-small {
     color: var(--blue);
 
-    font-size: 16px;
+    font-size: 15px;
 
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 
-    animation: fadeUp 0.7s ease 0.1s both;
+    animation: heroFade 0.8s ease both;
 }
 
 .hero h1 {
     color: var(--white);
 
-    font-size: clamp(50px, 8vw, 82px);
+    font-size: clamp(52px, 8vw, 86px);
 
-    line-height: 1;
+    line-height: 0.98;
 
-    letter-spacing: -2px;
+    letter-spacing: -3px;
 
-    animation: fadeUp 0.7s ease 0.2s both;
+    animation: heroFade 0.8s ease 0.1s both;
 }
 
 .hero h2 {
@@ -286,29 +371,29 @@ button {
 
     font-size: 25px;
 
-    margin-top: 18px;
+    margin-top: 19px;
 
     min-height: 38px;
 
-    animation: fadeUp 0.7s ease 0.3s both;
+    animation: heroFade 0.8s ease 0.2s both;
 }
 
 .hero-description {
-    max-width: 620px;
+    max-width: 630px;
 
-    margin-top: 22px;
+    margin-top: 23px;
 
     color: var(--muted);
 
     font-size: 16px;
 
-    animation: fadeUp 0.7s ease 0.4s both;
+    animation: heroFade 0.8s ease 0.3s both;
 }
 
-@keyframes fadeUp {
+@keyframes heroFade {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(22px);
     }
 
     to {
@@ -318,12 +403,51 @@ button {
 }
 
 
-/* Typing cursor */
+/* =========================================================
+   HERO STATUS
+========================================================= */
+
+.hero-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    animation: heroFade 0.8s ease 0.35s both;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 0 4px rgba(111, 174, 130, 0.08);
+}
+
+
+/* =========================================================
+   TYPING
+========================================================= */
 
 #typing-text::after {
     content: "|";
 
     margin-left: 2px;
+
+    color: var(--blue);
 
     animation: blink 0.8s infinite;
 }
@@ -335,41 +459,49 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    HERO BUTTONS
-========================= */
+========================================================= */
 
 .hero-buttons {
     display: flex;
 
     gap: 12px;
 
-    margin-top: 30px;
+    margin-top: 31px;
 
-    animation: fadeUp 0.7s ease 0.5s both;
+    animation: heroFade 0.8s ease 0.4s both;
 }
 
 .btn {
+    position: relative;
+
     display: inline-block;
 
-    padding: 11px 20px;
+    padding: 11px 21px;
 
     border-radius: 5px;
 
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
 
+    overflow: hidden;
+
     transition:
+        transform 0.25s ease,
         background 0.25s ease,
-        color 0.25s ease,
         border-color 0.25s ease,
-        transform 0.25s ease;
+        color 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
 }
 
 .primary-btn {
     background: var(--blue);
 
-    color: #111111;
+    color: #0d1115;
 
     border: 1px solid var(--blue);
 }
@@ -378,41 +510,39 @@ button {
     background: var(--blue-light);
 
     border-color: var(--blue-light);
-
-    transform: translateY(-2px);
 }
 
 .secondary-btn {
+    background: transparent;
+
     color: var(--white);
 
-    border: 1px solid #333333;
+    border: 1px solid var(--border-light);
 }
 
 .secondary-btn:hover {
-    color: var(--blue);
+    color: var(--blue-light);
 
     border-color: var(--blue);
-
-    transform: translateY(-2px);
 }
 
 
-/* =========================
+/* =========================================================
    SOCIAL LINKS
-========================= */
+========================================================= */
 
 .social-links {
     display: flex;
 
-    gap: 20px;
+    gap: 22px;
 
-    margin-top: 25px;
+    margin-top: 27px;
 
-    animation: fadeUp 0.7s ease 0.6s both;
+    animation: heroFade 0.8s ease 0.5s both;
 }
 
 .social-links a {
-    color: #808080;
+    color: #777f89;
 
     font-size: 13px;
 
@@ -422,15 +552,108 @@ button {
 }
 
 .social-links a:hover {
-    color: var(--blue);
+    color: var(--blue-light);
 
     transform: translateY(-2px);
 }
 
 
-/* =========================
+/* =========================================================
+   HERO SCROLL INDICATOR
+========================================================= */
+
+.hero-scroll {
+    position: absolute;
+
+    bottom: 35px;
+    left: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #656d76;
+
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+
+    animation: scrollFade 1s ease 1s both;
+}
+
+.hero-scroll span {
+    width: 20px;
+    height: 30px;
+
+    border: 1px solid #3a424b;
+
+    border-radius: 12px;
+
+    position: relative;
+}
+
+.hero-scroll span::before {
+    content: "";
+
+    position: absolute;
+
+    width: 3px;
+    height: 6px;
+
+    background: var(--blue-light);
+
+    border-radius: 3px;
+
+    top: 6px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    animation: scrollMove 1.6s ease-in-out infinite;
+}
+
+@keyframes scrollMove {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, 0);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, 10px);
+    }
+}
+
+@keyframes scrollFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-grid {
     display: grid;
@@ -453,7 +676,7 @@ button {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 15px;
+    gap: 14px;
 }
 
 .stat {
@@ -467,16 +690,16 @@ button {
 
     transition:
         transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .stat:hover {
     background: var(--card-hover);
 
-    border-color: var(--border-hover);
+    border-color: var(--border-light);
 
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 }
 
 .stat strong {
@@ -484,7 +707,7 @@ button {
 
     color: var(--white);
 
-    font-size: 22px;
+    font-size: 23px;
 }
 
 .stat span {
@@ -494,9 +717,9 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    SKILLS
-========================= */
+========================================================= */
 
 .skills-grid {
     display: grid;
@@ -516,11 +739,12 @@ button {
     border-radius: 6px;
 
     opacity: 0;
-    transform: translateY(20px);
+
+    transform: translateY(30px);
 
     transition:
-        opacity 0.6s ease,
-        transform 0.3s ease,
+        opacity 0.7s ease,
+        transform 0.35s ease,
         border-color 0.3s ease,
         background 0.3s ease;
 }
@@ -534,9 +758,9 @@ button {
 .skill-card:hover {
     background: var(--card-hover);
 
-    border-color: var(--border-hover);
+    border-color: var(--border-light);
 
-    transform: translateY(-5px);
+    transform: translateY(-7px);
 }
 
 .skill-card h3 {
@@ -544,7 +768,7 @@ button {
 
     font-size: 18px;
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .skill-card p {
@@ -554,9 +778,9 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    PROJECTS
-========================= */
+========================================================= */
 
 .projects-grid {
     display: grid;
@@ -567,8 +791,6 @@ button {
 }
 
 .project-card {
-    position: relative;
-
     padding: 32px;
 
     background: var(--card);
@@ -578,13 +800,14 @@ button {
     border-radius: 6px;
 
     opacity: 0;
-    transform: translateY(20px);
+
+    transform: translateY(30px);
 
     transition:
-        opacity 0.6s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
+        opacity 0.7s ease,
+        transform 0.35s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .project-card.show {
@@ -596,19 +819,21 @@ button {
 .project-card:hover {
     background: var(--card-hover);
 
-    border-color: var(--border-hover);
+    border-color: var(--border-light);
 
-    transform: translateY(-5px);
+    transform: translateY(-7px);
 }
 
 .project-number {
     color: var(--blue);
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: bold;
 
-    margin-bottom: 20px;
+    letter-spacing: 1px;
+
+    margin-bottom: 19px;
 }
 
 .project-card h3 {
@@ -638,24 +863,28 @@ button {
 .tags span {
     padding: 4px 9px;
 
-    border: 1px solid #303030;
+    border: 1px solid #30353b;
 
     border-radius: 4px;
 
-    color: #9aabbc;
+    color: #98a7b7;
 
     font-size: 11px;
 
     transition:
-        border-color 0.25s ease,
-        color 0.25s ease;
+        color 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .project-card:hover .tags span {
-    border-color: #3a3a3a;
+    border-color: #414850;
+
+    color: #afbdca;
 }
 
 .project-link {
+    display: inline-block;
+
     color: var(--blue);
 
     font-size: 13px;
@@ -664,19 +893,19 @@ button {
 
     transition:
         color 0.25s ease,
-        padding-left 0.25s ease;
+        transform 0.25s ease;
 }
 
 .project-link:hover {
     color: var(--blue-light);
 
-    padding-left: 4px;
+    transform: translateX(4px);
 }
 
 
-/* =========================
+/* =========================================================
    CERTIFICATIONS
-========================= */
+========================================================= */
 
 .certifications-grid {
     display: grid;
@@ -696,11 +925,12 @@ button {
     border-radius: 6px;
 
     opacity: 0;
-    transform: translateY(20px);
+
+    transform: translateY(30px);
 
     transition:
-        opacity 0.6s ease,
-        transform 0.3s ease,
+        opacity 0.7s ease,
+        transform 0.35s ease,
         border-color 0.3s ease;
 }
 
@@ -711,9 +941,9 @@ button {
 }
 
 .cert-card:hover {
-    border-color: var(--border-hover);
+    border-color: var(--border-light);
 
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 }
 
 .cert-card h3 {
@@ -731,9 +961,9 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    PROFILES
-========================= */
+========================================================= */
 
 .profiles-grid {
     display: grid;
@@ -755,13 +985,14 @@ button {
     border-radius: 6px;
 
     opacity: 0;
-    transform: translateY(20px);
+
+    transform: translateY(30px);
 
     transition:
-        opacity 0.6s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
+        opacity 0.7s ease,
+        transform 0.35s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .profile-card.show {
@@ -773,9 +1004,9 @@ button {
 .profile-card:hover {
     background: var(--card-hover);
 
-    border-color: var(--border-hover);
+    border-color: var(--border-light);
 
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 }
 
 .profile-card strong {
@@ -793,14 +1024,14 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .contact-section {
-    padding: 100px 0;
+    padding: 105px 0;
 
-    background: #141414;
+    background: #121417;
 
     border-top: 1px solid var(--border);
 }
@@ -812,11 +1043,11 @@ button {
 .contact-label {
     color: var(--blue);
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: bold;
 
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
 }
 
 .contact-box h2 {
@@ -836,14 +1067,14 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer {
-    padding: 25px 0;
+    padding: 26px 0;
 
-    background: #0d0d0d;
+    background: #0a0c0f;
 
     border-top: 1px solid var(--border);
 }
@@ -857,24 +1088,24 @@ button {
 }
 
 .footer-content p {
-    color: #6f6f6f;
+    color: #666e77;
 
     font-size: 12px;
 }
 
 
-/* =========================
+/* =========================================================
    SCROLL REVEAL
-========================= */
+========================================================= */
 
 .reveal {
     opacity: 0;
 
-    transform: translateY(25px);
+    transform: translateY(30px);
 
     transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
 .reveal.show {
@@ -884,29 +1115,42 @@ button {
 }
 
 
-/* =========================
-   REDUCED MOTION
-========================= */
+/* =========================================================
+   STAGGERED CARD ANIMATION
+========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+.skill-card:nth-child(1),
+.project-card:nth-child(1),
+.cert-card:nth-child(1),
+.profile-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
 
-    html {
-        scroll-behavior: auto;
-    }
+.skill-card:nth-child(2),
+.project-card:nth-child(2),
+.cert-card:nth-child(2),
+.profile-card:nth-child(2) {
+    transition-delay: 0.12s;
+}
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+.skill-card:nth-child(3),
+.project-card:nth-child(3),
+.cert-card:nth-child(3),
+.profile-card:nth-child(3) {
+    transition-delay: 0.19s;
+}
+
+.skill-card:nth-child(4),
+.project-card:nth-child(4),
+.cert-card:nth-child(4),
+.profile-card:nth-child(4) {
+    transition-delay: 0.26s;
 }
 
 
-/* =========================
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 850px) {
 
@@ -925,6 +1169,10 @@ button {
     .hero-description {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .hero-status {
+        justify-content: center;
     }
 
     .hero-buttons,
@@ -949,12 +1197,17 @@ button {
     .profiles-grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    .hero::before,
+    .hero::after {
+        opacity: 0.5;
+    }
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -962,12 +1215,18 @@ button {
         padding: 75px 0;
     }
 
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
     .section-heading h2 {
         font-size: 30px;
     }
 
 
-    /* Mobile Navbar */
+    /* -----------------------------------------------------
+       Navbar
+    ----------------------------------------------------- */
 
     .menu-btn {
         display: block;
@@ -1011,7 +1270,9 @@ button {
     }
 
 
-    /* Hero */
+    /* -----------------------------------------------------
+       Hero
+    ----------------------------------------------------- */
 
     .hero {
         padding-top: 100px;
@@ -1020,7 +1281,7 @@ button {
     .hero h1 {
         font-size: 52px;
 
-        letter-spacing: -1px;
+        letter-spacing: -2px;
     }
 
     .hero h2 {
@@ -1029,6 +1290,12 @@ button {
 
     .hero-description {
         font-size: 14px;
+    }
+
+    .hero-status {
+        justify-content: center;
+
+        text-align: center;
     }
 
     .hero-buttons {
@@ -1043,43 +1310,70 @@ button {
         text-align: center;
     }
 
+    .hero::before {
+        width: 300px;
+        height: 300px;
 
-    /* About */
+        right: -180px;
+    }
+
+    .hero::after {
+        display: none;
+    }
+
+    .hero-scroll {
+        display: none;
+    }
+
+
+    /* -----------------------------------------------------
+       About
+    ----------------------------------------------------- */
 
     .stats {
         grid-template-columns: 1fr;
     }
 
 
-    /* Skills */
+    /* -----------------------------------------------------
+       Skills
+    ----------------------------------------------------- */
 
     .skills-grid {
         grid-template-columns: 1fr;
     }
 
 
-    /* Projects */
+    /* -----------------------------------------------------
+       Projects
+    ----------------------------------------------------- */
 
     .projects-grid {
         grid-template-columns: 1fr;
     }
 
 
-    /* Certifications */
+    /* -----------------------------------------------------
+       Certifications
+    ----------------------------------------------------- */
 
     .certifications-grid {
         grid-template-columns: 1fr;
     }
 
 
-    /* Profiles */
+    /* -----------------------------------------------------
+       Profiles
+    ----------------------------------------------------- */
 
     .profiles-grid {
         grid-template-columns: 1fr;
     }
 
 
-    /* Contact */
+    /* -----------------------------------------------------
+       Contact
+    ----------------------------------------------------- */
 
     .contact-section {
         padding: 75px 0;
@@ -1090,11 +1384,35 @@ button {
     }
 
 
-    /* Footer */
+    /* -----------------------------------------------------
+       Footer
+    ----------------------------------------------------- */
 
     .footer-content {
         flex-direction: column;
 
         text-align: center;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
     }
 }
