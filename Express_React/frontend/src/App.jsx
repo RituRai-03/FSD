@@ -1,32 +1,22 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import React from 'react'
+import { useState, useEffect} from "react"
 
-function App() {
+const App = () => {
+  const[product,setproduct]=useState([]);
+  const[name,setName]=useState("");
+  const[price,setPrice]=useState("")
 
-    const [products, setProducts] = useState([]);
+  //get product
+  const getProduct=async()=>{
+    await fetch("http://localhost:5173/")
+  }
 
-    useEffect(() => {
-
-        fetch("http://localhost:5000/api/products")
-            .then(response => response.json())
-            .then(data => setProducts(data))
-            .catch(error => console.log(error));
-
-    }, []);
-
-    return (
-        <div>
-            <h1>Product Manager</h1>
-
-            {products.map(product => (
-                <div key={product.id}>
-                    <h3>{product.name}</h3>
-                    <p>₹{product.price}</p>
-                    <p>{product.category}</p>
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <div>
+      
+    </div>
+  )
 }
 
-export default App;
+export default App
+

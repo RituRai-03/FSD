@@ -74,7 +74,7 @@ app.delete("/api/products/:id", (req, res) => {
 
     fs.writeFileSync(
         "product.json",
-        JSON.stringify(updatedProducts, null, 2)
+        JSON.stringify(updatedProducts, null, 2) 
     );
 
     res.json({
@@ -82,7 +82,6 @@ app.delete("/api/products/:id", (req, res) => {
     });
 
 });
-
 
 
 app.listen(PORT, () => {
