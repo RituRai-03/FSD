@@ -1,20 +1,27 @@
 [
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 55000,
+    "category": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Keyboard",
+    "price": 1200,
+    "category": "Accessories"
+  },
+  {
+    "id": 3,
+    "name": "Mouse",
+    "price": 700,
+    "category": "Accessories"
+  },
+
     {
-        "id": 1,
-        "name": "Laptop",
-        "price": 55000,
-        "category": "Electronics"
-    },
-    {
-        "id": 2,
-        "name": "Keyboard",
-        "price": 1200,
-        "category": "Accessories"
-    },
-    {
-        "id": 3,
-        "name": "Mouse",
-        "price": 700,
-        "category": "Accessories"
-    }
+    "id": 4,
+    "name": "Mic",
+    "price": 7000,
+    "category": "Accessories"
+  }
 ]
